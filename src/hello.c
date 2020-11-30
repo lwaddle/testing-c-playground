@@ -1,36 +1,51 @@
 #include <stdio.h>
-
-
-
-int main(int argc, char* argv[])
+#include <string.h>
+#include <stdlib.h>
+ 
+struct Node
 {
+	unsigned int id;
+	struct Node* next;
+};
 
-	enum cardinal_directions
-	{
-		north = 360,
-		south = 180,
-	};
+int main(void)
+{
+	
+	struct Node* head;
+
+	// make a node
+	head = malloc(sizeof(struct Node));
+	head->id = 1;
+	head->next = NULL;
+
+	// make another node;
+	struct Node* n1 = malloc(sizeof(struct Node));
+	n1->id = 2;
+	n1->next = head;
+
+	// make original head point to n1
+	head->next = n1;
+
+	// NULL n1
+	n1 = NULL;
+	
+	// get link to head
+	//struct Node* head = malloc(sizeof(struct Node));
+
+	//head->id = 1;
+	//head->next = NULL;
+
+	// get another node
+	//struct Node* n2 = malloc(sizeof(struct Node));
+	
 
 
+	int* numbers = malloc(sizeof(int) * 100);
 
-	if (argc > 1)
-	{
-		printf("Option %s\n", argv[1]);
-
-		for (int i = 0; i < 2; i++)
-		{
-			printf("%d", north);
-			printf("%d", south);
-		}
-
-		printf("Size of north is %ld bytes", sizeof(north));
 
 		
-	}
-	else
-	{
-		printf("Usage: hello <option>\n");
-	}
 
 	return 0;
 }
+
+
