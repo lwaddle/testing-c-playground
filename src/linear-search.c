@@ -1,35 +1,58 @@
 #include <stdio.h>
-#include <stdlib.h>
+
+// function prototypes
+void print_numbers(int numbers[], int length);
+void sort(int unsorted[], int length);
+void swap(int *left, int *right);
 
 int main(int argc, char *argv[])
 {
-	int *foo = malloc(sizeof(int) * 10);
-	
-	//printf("%d\n", (int)(sizeof(*foo)));	
-	
-	for (int i = 0; i < 10; i++, foo++)
-	{
-		*foo = i * 2;
-		printf("pFoo = %p, value at pFoo = %d\n", foo, *foo);
-	}
+	int numbers[10] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
 
+	int *pNumbers = numbers;
 
-	struct Test_foo
-	{
-		int x;
-		int y;
-		int z;
+	// print the unsorted numbers
+	print_numbers(numbers, 10);
 
-		long long baz[10000];
-	};
+	// sort low to high
+	sort(numbers, 10);
 
-	struct Test_foo bar;
-	bar.x = 4;
-	bar.y = 3;
+	// print sorted numbers
+	print_numbers(numbers, 10);
 
-	printf("%d %d\n", bar.x, bar.y);
-
-	printf("%lu\n", sizeof(bar));
 
 	return 0;
+}
+
+void print_numbers(int numbers[], int length)
+{
+	for (int i = 0; i < length; i++)
+	{
+		printf("%d ", *(numbers + i));
+	}
+}
+
+void sort(int unsorted[], int length)
+{
+	int scan_count = 0;
+	while (scan_count <= length)
+	{
+		for (int i = 0; i < length; i++)
+		{
+			if (*(unsorted + i) > *(unsorted + i + 1))
+			{
+				printf("scan count: %d, needs swap\n", scan_count);
+				swap(unsorted + i, unsorted + i + 1);
+			}
+		}
+		scan_count++;
+
+	}
+}
+
+void swap(int *left, int *right)
+{
+	int temporary = *left;
+	*left = *right;
+	*right = temporary;
 }
