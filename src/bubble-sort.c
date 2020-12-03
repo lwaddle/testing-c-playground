@@ -17,9 +17,9 @@ void swap(int *value1, int *value2);
 
 int main(int argc, char *argv[])
 {
-    const int TEST_LENGTH = 100;
+    const int TEST_LENGTH = 150;
 
-    int numbers[TEST_LENGTH] = {0};
+    int numbers[TEST_LENGTH];
 
     populate_test_array(numbers, TEST_LENGTH);
 
